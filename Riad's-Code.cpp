@@ -9,7 +9,8 @@ private:
 
 public:
     // Constructor
-    Player(int startX, int startY, int initialHealth) : xPos(startX), yPos(startY), health(initialHealth) {}
+    Player(int startX, int startY, int initialHealth) : xPos(startX), yPos(startY), health(initialHealth) {
+    }
 
     // Method to handle player movement
     void moveDirection(int xChange, int yChange) {
