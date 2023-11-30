@@ -1,6 +1,8 @@
 #include <iostream>
+using namespace std;
 
-class Enemy {
+class Enemy 
+{
 private:
     int x;
     int y;
@@ -8,85 +10,127 @@ private:
     bool isDestroyed;
 
 public:
-    Enemy(int initialX, int initialY, int initialHealth) : x(initialX), y(initialY), health(initialHealth), isDestroyed(false) {}
+    // Constructor to initialize Enemy object
+    Enemy(int initialX, int initialY, int initialHealth)
+        : x(initialX), y(initialY), health(initialHealth), isDestroyed(false) {}
 
-    void moveUp() {
-        if (!isDestroyed) {
+    // Movement functions for the Enemy object
+    void moveUp() 
+    {
+        if (!isDestroyed) 
+        {
             y++;
-            std::cout << "Enemy moved up to position: (" << x << ", " << y << ")" << std::endl;
+            cout << "Enemy moved up to position: (" << x << ", " << y << ")" << endl;
         }
     }
 
-    void moveDown() {
-        if (!isDestroyed) {
+    void moveDown() 
+    {
+        if (!isDestroyed) 
+        {
             y--;
-            std::cout << "Enemy moved down to position: (" << x << ", " << y << ")" << std::endl;
+            cout << "Enemy moved down to position: (" << x << ", " << y << ")" << endl;
         }
     }
 
-    void moveLeft() {
-        if (!isDestroyed) {
+    void moveLeft() 
+    {
+        if (!isDestroyed) 
+        {
             x--;
-            std::cout << "Enemy moved left to position: (" << x << ", " << y << ")" << std::endl;
+            cout << "Enemy moved left to position: (" << x << ", " << y << ")" << endl;
         }
     }
 
-    void moveRight() {
-        if (!isDestroyed) {
+    void moveRight() 
+    {
+        if (!isDestroyed) 
+        {
             x++;
-            std::cout << "Enemy moved right to position: (" << x << ", " << y << ")" << std::endl;
+            cout << "Enemy moved right to position: (" << x << ", " << y << ")" << endl;
         }
     }
 
-    void takeDamage(int damageTaken) {
-        if (!isDestroyed) {
+    // Function to simulate the enemy taking damage
+    void takeDamage(int damageTaken) 
+    {
+        if (!isDestroyed) 
+        {
             health -= damageTaken;
-            if (health <= 0) {
+            if (health <= 0) 
+            {
                 destroy();
-            } else {
-                std::cout << "Enemy took " << damageTaken << " damage. Current health: " << health << std::endl;
+            } 
+            else 
+            {
+                cout << "Enemy took " << damageTaken << " damage. Current health: " << health << endl;
             }
         }
     }
 
-    void destroy() {
-        std::cout << "Enemy has been destroyed!" << std::endl;
+    // Function to destroy the enemy
+    void destroy() 
+    {
+        cout << "Enemy has been destroyed!" << endl;
         isDestroyed = true;
-        // Additional actions after enemy is destroyed
+        // Additional actions after enemy is destroyed can be added here
     }
 
-    int getX() const {
+    // Getter functions to access private member variables
+    int getX() const 
+    {
         return x;
     }
 
-    int getY() const {
+    int getY() const 
+    {
         return y;
     }
 
-    bool isAlive() const {
+    bool isAlive() const 
+    {
         return !isDestroyed;
     }
 
-    int getHealth() const {
+    int getHealth() const
+    {
         return health;
     }
 };
 
-int main() {
+int main() 
+{
     // Creating an enemy object at position (0, 0) with 50 health
     Enemy enemy(0, 0, 50);
 
-    // Moving the enemy around
+    // Moving the enemy around and displaying positions after each movement
     enemy.moveUp();
-    enemy.moveRight();
-    enemy.moveDown();
-    enemy.moveLeft();
+    cout << "Current position of the enemy: (" << enemy.getX() << ", " << enemy.getY() << ")" << endl;
 
-    // Enemy takes damage and is destroyed
+    enemy.moveRight();
+    cout << "Current position of the enemy: (" << enemy.getX() << ", " << enemy.getY() << ")" << endl;
+
+    enemy.moveDown();
+    cout << "Current position of the enemy: (" << enemy.getX() << ", " << enemy.getY() << ")" << endl;
+
+    enemy.moveLeft();
+    cout << "Current position of the enemy: (" << enemy.getX() << ", " << enemy.getY() << ")" << endl;
+
+    // Inflict damage on the enemy
     enemy.takeDamage(60);
 
+    // Checking if the enemy is still alive
+    if (enemy.isAlive()) 
+    {
+        cout << "Enemy is still alive with " << enemy.getHealth() << " health." << endl;
+    } 
+    else 
+    {
+        cout << "Enemy has been destroyed!" << endl;
+    }
+
     // Retrieving the final position of the enemy
-    std::cout << "Final position of the enemy: (" << enemy.getX() << ", " << enemy.getY() << ")" << std::endl;
+    cout << "Final position of the enemy: (" << enemy.getX() << ", " << enemy.getY() << ")" << endl;
 
     return 0;
 }
