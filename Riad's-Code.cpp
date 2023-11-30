@@ -55,8 +55,5 @@ int main() {
     player.shoot();  // Player shoots
     player.providePosition();  // Verbally provide player position
 
-    // Example of player taking damage
-    player.takeDamage(20);  // Player takes damage
-
     return 0;
 }
