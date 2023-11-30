@@ -31,6 +31,20 @@ public:
         // You can add additional logic here for verbalizing the position, e.g., using text-to-speech
     }
 
+    // Method to handle player taking damage
+    void takeDamage(int damageAmount) {
+        health -= damageAmount;
+        std::cout << "Player took " << damageAmount << " damage. ";
+
+        // Check if the player is defeated
+        if (health <= 0) {
+            std::cout << "Player defeated. Game over!\n";
+            // You can add additional logic here for handling game over, such as ending the game
+        } else {
+            std::cout << "Player Health: " << health << "\n";
+        }
+    }
+
     // Additional methods or features can be added based on your game requirements
 };
 
@@ -40,6 +54,9 @@ int main() {
     player.moveDirection(1, 1);  // Move the player
     player.shoot();  // Player shoots
     player.providePosition();  // Verbally provide player position
+
+    // Example of player taking damage
+    player.takeDamage(20);  // Player takes damage
 
     return 0;
 }
