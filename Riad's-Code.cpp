@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 class Player {
 private:
@@ -11,10 +12,10 @@ public:
     Player(int startX, int startY, int initialHealth) : xPos(startX), yPos(startY), health(initialHealth) {}
 
     // Method to handle player movement
-    void moveDirection(int xDelta, int yDelta) {
+    void moveDirection(int xChange, int yChange) {
         // Add logic to check boundaries or obstacles before moving
-        xPos += xDelta;
-        yPos += yDelta;
+        xPos += xChange;
+        yPos += yChange;
 
         // Add logic for updating the game state based on the new position
         // For example, check for collisions with enemies, pickups, etc.
@@ -27,21 +28,21 @@ public:
 
     // Method to provide player position verbally
     void providePosition() const {
-        std::cout << "Player Position: (" << xPos << ", " << yPos << ")\n";
+        cout << "Player Position: (" << xPos << ", " << yPos << ")\n";
         // You can add additional logic here for verbalizing the position, e.g., using text-to-speech
     }
 
     // Method to handle player taking damage
     void takeDamage(int damageAmount) {
         health -= damageAmount;
-        std::cout << "Player took " << damageAmount << " damage. ";
+        cout << "Player took " << damageAmount << " damage. ";
 
         // Check if the player is defeated
         if (health <= 0) {
-            std::cout << "Player defeated. Game over!\n";
+            cout << "Player defeated. Game over!\n";
             // You can add additional logic here for handling game over, such as ending the game
         } else {
-            std::cout << "Player Health: " << health << "\n";
+            cout << "Player Health: " << health << "\n";
         }
     }
 
