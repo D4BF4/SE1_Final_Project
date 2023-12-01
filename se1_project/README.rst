@@ -16,7 +16,7 @@ SE1_Project
 
 
 
-Final project for SE1. Simple game that is accessible to the visually impaired.
+Final project for SE1. A simple game that is accessible to the visually impaired.
 
 
 * Free software: GNU General Public License v3
