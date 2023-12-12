@@ -18,6 +18,8 @@ SE1_Project
 
 Final project for SE1. A simple game that is accessible to the visually impaired.
 
+This software requires Python 3.7 or later and the proper installation of the pygame library. 
+Under the folder titled "se1_project", run "se1_project.py".
 
 * Free software: GNU General Public License v3
 * Documentation: https://se1-project.readthedocs.io.
