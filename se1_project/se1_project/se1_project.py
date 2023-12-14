@@ -1,6 +1,6 @@
 import pygame
 import sys, os
-import math
+import math, random
 
 pygame.init()
 
@@ -72,6 +72,42 @@ class Zombie:
         self.x = x
         self.y = y
 
+        self.reset_offset = 0
+        self.offset_x = random.randrange(-150, 150)
+        self.offset_y = random.randrange(-150, 150)
+
+        self.moving_right = False
+        self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False        
+
+    def main(self, display):
+        
+        if self.reset_offset == 0:
+            self.offset_x = random.randrange(-150, 150)
+            self.offset_y = random.randrange(-150, 150)
+            self.reset_offset == random.randrange(120, 150)
+        else:
+            self.reset_offset -= 1
+        
+
+        if player.x + self.offset_x > self.x - display_scroll[0]:
+            self.x += 1
+            #display.blit((zombie_movement[2]), (self.x, self.y))
+
+        elif player.x + self.offset_x < self.x - display_scroll[0]:
+            self.x -= 1
+            #display.blit((zombie_movement[3]), (self.x, self.y))
+
+        if player.y + self.offset_y > self.y - display_scroll[1]:
+            self.y += 1
+            #display.blit((zombie_movement[0]), (self.x, self.y))
+
+        elif player.y + self.offset_y < self.y - display_scroll[1]:
+            self.y -= 1
+            #display.blit((zombie_movement[1]), (self.x, self.y))
+
+        display.blit((zombie_movement[2]), (self.x, self.y))
 
 class PlayerBullet:
     def __init__(self, x, y, mouse_x, mouse_y):
@@ -92,6 +128,8 @@ class PlayerBullet:
         pygame.draw.circle(display, (0, 0, 0), (self.x, self.y), 5)
 
 player = Player(400, 300, 32, 32)
+
+enemies = [Zombie(900, 300)]
 
 display_scroll = [0, 0]
 
@@ -157,6 +195,9 @@ while True:
 
     for bullet in player_bullets:
         bullet.main(display)
+
+    for enemy in enemies:
+        enemy.main(display)
 
     clock.tick(60)
     pygame.display.update()
